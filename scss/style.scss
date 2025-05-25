@@ -1,0 +1,15 @@
+@import "./const.scss";
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body{
+    background: {
+        image: url($image-url);
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+        attachment: fixed
+    };
+}
