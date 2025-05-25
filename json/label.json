@@ -1,0 +1,26 @@
+{
+    "fr":{
+        "flag": "img/flag/fr.svg",
+        "inputPrefix": "Entrez un",
+        "add": "Ajouter",
+        "send": "Envoyer",
+        "errormsg": "Merci d'insérer une valeur.",
+        "other": "Autre",
+        "yours" : "vos",
+        "delete": "Suprimer",
+        "edit": "Modifier",
+        "cancel" : "Annuler"
+    },
+    "en":{
+        "flag": "img/flag/eng.svg",
+        "inputPrefix": "Type a",
+        "add": "Add",
+        "send": "Send",
+        "errormsg": "Please insert a value.",
+        "other": "Other",
+        "yours" : "your",
+        "delete": "Delete",
+        "edit": "Edit",
+        "cancel" : "Cancel"
+    }
+}
