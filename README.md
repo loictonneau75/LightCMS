@@ -3,6 +3,7 @@
     - [Structure Overview](#structure-overview)
         - [Root Object](#root-object)
         - [SiteName](#sitename)
+        - [bgVideo](#bgVideo)
         - [Collectables](#collectables)
         - [Fields](#fields)
             - [Row](#row)
@@ -31,6 +32,7 @@ The file consists of a **root** `object` with the following **required** keys:
 > ⚠️ All of the following keys are **mandatory**:
 
 - [siteName](#sitename)
+- [bgVideo](#bgVideo)
 - [collectables](#collectables)
 - [fields](#fields)
 - [carousel](#carousel)
@@ -38,6 +40,7 @@ The file consists of a **root** `object` with the following **required** keys:
 ```json
 {
     "siteName": "str",
+    "bgVideo": "str",
     "collectables":{...},
     "field":[...],
     "carousel":{...}
@@ -48,11 +51,15 @@ The file consists of a **root** `object` with the following **required** keys:
 
 A `string` used as the site name and page title.
 
+### BgVideo
+
+A `string` corresponding to the url of the video to use in background.
+
 ### Collectables
 
 An `object` that defines the name of the collected items in each supported [language](#languague).
 
-```json
+```js
 {
     ...,
     "collectables":{
