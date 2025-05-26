@@ -74,7 +74,7 @@ An `object` that defines the name of the collected items in each supported [lang
 
 An `array` of [rows](#row). Each [row](#row) represents a single line of inputs in the form.
 
-```python
+```js
 {
     ...,
     "fields":[
@@ -92,7 +92,7 @@ An `array` of [rows](#row). Each [row](#row) represents a single line of inputs 
 A row is an `object` where each key represents an [input](#input). Each [input](#input) is itself an `object` defining a form field.
 
 
-```
+```js
 {
     ...,
     "fields":[
@@ -124,7 +124,7 @@ Each input must at minimum include the following keys:
 |cardPosition|str|Placement in the card: "header" or "body"|
 |label|object|	Multilingual labels for the input (see [Language](#language))
 
-```json
+```js
 {
     ...,
     "fields":[
@@ -162,7 +162,7 @@ Additional properties allow you to control input behavior and appearance:
 
 #####  Examples
 1. With **storageKey** (standard input + localStorage):
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -185,7 +185,7 @@ Additional properties allow you to control input behavior and appearance:
     }
     ```
 2. With **otherId** (Dropdown with “Other” option):
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -209,7 +209,7 @@ Additional properties allow you to control input behavior and appearance:
     }
     ```
 3. With **choiceId** (Multi-choice input):
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -233,7 +233,7 @@ Additional properties allow you to control input behavior and appearance:
     }
     ```
 4. With **textarea**:
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -256,7 +256,7 @@ Additional properties allow you to control input behavior and appearance:
     }
     ```
 5. with **ndColumn** (Multi-column layout simulation):
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -279,7 +279,7 @@ Additional properties allow you to control input behavior and appearance:
     }
     ```
 6. With **cardRole** (Card header roles title and subtitle):
-    ```json
+    ```js
     {
         ...,
         "fields":[
@@ -326,7 +326,7 @@ An `object` describing visual carousel behavior:
 
 > ⚠️ You cannot set both **loop** and **infinite** to **true** simultaneously.
 
-```json
+```js
 {
     ...,
     "carousel":{

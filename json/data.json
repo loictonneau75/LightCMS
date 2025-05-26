@@ -1,7 +1,7 @@
 {
     "siteName": "tea_loundge",
-    "version": "1.0.0",
-    "bgVideo": "",
+    "version": "1.1.0",
+    "bgVideo": "video/thé_background.mp4",
     "collectables": {
         "en": "tea",
         "fr": "thé"
