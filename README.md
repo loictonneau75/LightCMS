@@ -22,7 +22,7 @@
 
 # Site Configuration - [data.json](json/data.json)
 
-This JSON file defines the dynamic structure of the web form used by the site, as well as the carousel configuratio
+The file [json/data.json](json/data.json) defines the dynamic structure of the web form used by the site, as well as the carousel configuration.
 
 ## Structure Overview
 
@@ -316,13 +316,13 @@ Additional properties allow you to control input behavior and appearance:
 
 An `object` describing visual carousel behavior:
 
-|Nom|Type|Description|
+|Name|Type|Description|
 |-:|-|-|
 |slidesToScroll|int|Number of slides to scroll per button click|
 |slidesVisible|int|Number of slides shown at once|
 |loop|bool|Enables looping behavior(do not combine with infinite)|
 |infinite|bool|Enables infinite scroll (do not combine with loop)|
-|slideIndicator|bool|ù£Show pagination indicator|
+|slideIndicator|bool|Show pagination indicator|
 
 > ⚠️ You cannot set both **loop** and **infinite** to **true** simultaneously.
 
@@ -383,3 +383,75 @@ Make sure you have Dart Sass installed on your machine. You can install it via:
 - or follow the official installation guide: [sass-lang.com/install](https://sass-lang.com/install)
 
 Once Dart Sass is installed and the watch script is running, any changes made to `.scss` files will automatically be compiled into `.css`.
+
+# Style Customization - [custom.scss](scss/custom.scss)
+The file [scss/_const.scss](scss/custom.scss) contains global SCSS variables used to customize the appearance and styling of the entire site.
+
+## Font
+
+### Add a Font
+>⚠️ All font imports (external or local) **must be placed at the top** of the file
+
+#### Add a new font by API
+
+1. Choose a font from [Google Fonts](https://fonts.google.com).
+2. Copy the provided `@import statement`.
+3. Paste it at the top of [custom.scss](scss/custom.scss).
+
+###### exemple
+
+```scss
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+```
+#### Add a new font in local
+
+1. Place your font file (e.g., .woff2, .ttf) in the`font/` folder
+2. Declare it using `@font-face` in [custom.scss](scss/custom.scss)
+
+|Name|Description|Constraint|
+|-|-|-|
+|font-family|Name used to reference the font in CSS|- **required**<br>- Must be unique|
+|src|Path or URL to the font file|- **required**|
+|format|Specifies the font format|- **required**<br>- Must match the actual file format (truetype, opentype, woff, etc...)|
+|font-weight|Defines the weight (thickness) of the font|Use `normal`, `bold`, or `numeric` (`400`, `700`, etc.)|
+|font-style|Defines the font style|Use `normal`, `italic`, or `oblique`|
+
+###### exemple
+
+```scss
+@font-face {
+    font-family: 'MyFont';
+    src: url('./fonts/myfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+```
+
+### Apply the Font
+
+The project uses two global font variables:
+```scss
+    $title-font: str;
+    $body-font: str;
+```
+Use the `font-family` value declared in your import or `@font-face` as the value for these variables.
+
+These variables are used throughout the site to apply consistent typography styles to titles and body text.
+
+## color
+
+Colors are stored in a SCSS map variable called `$colors`, with named keys for different usage types
+```scss
+$colors : (
+    "primary":   #AEB89F,
+    "secondary": #4B6653,
+    "error":     #e84141
+);
+
+```
+
+### Change a Color
+
+To change the site’s color theme, simply **edit one or more values** in this map.
+All elements using these colors will automatically update when the SCSS is recompiled.
+

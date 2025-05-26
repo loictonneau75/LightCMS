@@ -1,38 +1,17 @@
-@font-face {
-  font-family: "Osake";
-  src: url("../font/Osake.otf") format("opentype");
-}
-@font-face {
-  font-family: "Genjiro";
-  src: url("../font/Genjiro.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Lato";
-  src: url("../font/Lato-Regular.ttf") format("truetype");
-}
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: Lato;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use "./const.scss" as const;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   scss\style.scss 1:1  root stylesheet */
 
-.css_background-div {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"./const.scss\" as const;\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   scss\\style.scss 1:1  root stylesheet";
 }
-.css_background-div > * {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.css_background-video {
-  object-fit: cover;
-}
-.css_background-overlay {
-  background-color: rgba(0, 0, 0, 0.25);
-}
-
-/*# sourceMappingURL=style.css.map */

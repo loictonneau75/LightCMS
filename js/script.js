@@ -3,8 +3,12 @@ import * as utils from "./tools/utils.js"
 
 const label = await utils.getConfigValue("json/label.json")
 const config = await utils.getConfigValue("json/data.json")
-const backgroundDiv = backGround()
-document.body.appendChild(backgroundDiv)
+document.body.appendChild(backGround())
+
+const body = DH.createCustomElement("div")
+const h1 = DH.createCustomElement("p", {innerText: config.siteName ,classList: ["css_title"]})
+body.appendChild(h1)
+document.body.appendChild(body)
 
 
 function backGround(){
