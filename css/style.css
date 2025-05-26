@@ -54,10 +54,33 @@
   text-align: center;
 }
 
+.css_form {
+  background-color: rgba(75, 102, 83, 0.3);
+  padding: 1.5em;
+  border-radius: 0.5em;
+  backdrop-filter: blur(5px);
+}
 .css_form-wrapper {
+  display: flex;
   height: 100vh;
   width: 100%;
-  background-color: rgba(255, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  gap: 10em;
+}
+.css_form-row {
+  display: flex;
+  flex-direction: row;
+}
+.css_form-input {
+  border-radius: 0.6rem;
+  outline: none;
+  background-color: rgba(75, 102, 83, 0.3);
+  border: 0.15rem solid rgba(174, 184, 159, 0.5);
+  color: #AEB89F;
+}
+.css_form-input::placeholder {
+  color: #AEB89F;
 }
 
 .css_language-wrapper {
@@ -72,6 +95,11 @@
   cursor: pointer;
   background: #fff center center no-repeat;
   border-radius: 10%;
+}
+
+#test1 {
+  width: 100%;
+  height: 100vh;
 }
 
 *, *::before, *::after {

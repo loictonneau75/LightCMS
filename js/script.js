@@ -23,7 +23,12 @@ let lang = utils.getlang()
 const topSection = new TS.TopSection(config, label, lang)
 document.body.appendChild(topSection.build())
 
-const form = new Form.Form()
+const form = new Form.Form(config, label ,lang)
 document.body.appendChild(form.build())
 
+document.body.appendChild(DH.createCustomElement("div", {id: "test1"}))
+
 window.addEventListener("scroll", () => topSection.handleScroll(background));
+
+
+window.scrollTo(0, document.body.scrollHeight / 3);
