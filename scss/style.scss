@@ -1,35 +1,15 @@
-@use "./custom.scss" as const;
+@use "./custom.scss" as custom;
+@use "./parts/background.scss";
+@use "./parts/topSection.scss";
 
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
-    font-family: const.$body-font;
+    font-family: custom.$body-font;
 }
-.css_{
-    &background{
-        &-div{
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            & > *{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-        }
-        &-video{
-            object-fit: cover;
-        }
-        &-overlay{
-            background-color: rgba(0, 0, 0, 0.25);
-        }
-    }
-    &title{
-        font-family: const.$title-font;
-        color: map-get(const.$colors, "primary");
-        font-size: 6rem;
-    }
+.spacer-test{
+    width: 100%;
+    height: 100vh;
 }
+
+

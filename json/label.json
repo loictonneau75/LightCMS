@@ -1,5 +1,6 @@
 {
     "fr":{
+        "welcome": "bienvenue dans le",
         "flag": "img/flag/fr.svg",
         "inputPrefix": "Entrez un",
         "add": "Ajouter",
@@ -12,6 +13,7 @@
         "cancel" : "Annuler"
     },
     "en":{
+        "welcome": "Welcome in",
         "flag": "img/flag/eng.svg",
         "inputPrefix": "Type a",
         "add": "Add",

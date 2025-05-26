@@ -1,20 +1,23 @@
 import * as DH from "./tools/domHelper.js";
 import * as utils from "./tools/utils.js"
+import * as BGM from "./app/backgroungManager.js"
+import * as TS from "./app/topSection.js"
+
 
 const label = await utils.getConfigValue("json/label.json")
 const config = await utils.getConfigValue("json/data.json")
-document.body.appendChild(backGround())
 
-const body = DH.createCustomElement("div")
-const h1 = DH.createCustomElement("p", {innerText: config.siteName ,classList: ["css_title"]})
-body.appendChild(h1)
-document.body.appendChild(body)
+document.title = config.siteName
+
+const background = new BGM.backgroundManager(config)
+document.body.appendChild(background.build())
+
+const topSection = new TS.TopSection(config, label)
+document.body.appendChild(topSection.build())
+
+document.body.appendChild(DH.createCustomElement("div", {classList: ["spacer-test"], id: "test1"}))
+document.body.appendChild(DH.createCustomElement("div", {classList: ["spacer-test"], id: "test2"}))
+
+window.addEventListener("scroll", () => topSection.handleScroll(background));
 
 
-function backGround(){
-    const video = DH.createCustomElement("video", {classList: ["css_background-video"], src: utils.getAbsoltutePath(config.bgVideo), type: "video/mp4", muted: true, autoplay: true, loop: true})
-    const overlay = DH.createCustomElement("div", {classList: ["css_background-overlay"]})
-    const div = DH.createCustomElement("div", {classList: ["css_background-div"]})
-    div.append(video, overlay)
-    return div
-}
