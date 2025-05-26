@@ -37,7 +37,7 @@ The file consists of a **root** `object` with the following **required** keys:
 - [fields](#fields)
 - [carousel](#carousel)
 
-```json
+```
 {
     "siteName": "str",
     "bgVideo": "str",
