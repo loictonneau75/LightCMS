@@ -2,6 +2,7 @@
     "siteName": "tea loundge",
     "version": "1.1.0",
     "bgVideo": "video/thé_background.mp4",
+    "favicon": "img/favicon.ico",
     "collectables": {
         "en": "tea",
         "fr": "thé"

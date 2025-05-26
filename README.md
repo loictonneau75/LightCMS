@@ -1,24 +1,3 @@
-# Index
-- [Site Configuration](#site-configuration---datajson)
-    - [Structure Overview](#structure-overview)
-        - [Root Object](#root-object)
-        - [SiteName](#sitename)
-        - [bgVideo](#bgVideo)
-        - [Collectables](#collectables)
-        - [Fields](#fields)
-            - [Row](#row)
-            - [input](#input)
-                - [Required keys](#required-keys)
-                - [Optional keys](#optional-keys)
-                - [Examples](#examples)
-        - [Carousel](#carousel)
-        - [Language](#language)
-            - [In data.json](#in-datajson)
-            - [In label.json](#in-labeljson)
-    - [SCSS Compilation](#scss-compilation)
-        - [Why might the CSS be missing after cloning?](#why-might-the-css-be-missing-after-cloning)
-        - [How to generate the CSS](#how-to-generate-the-css)
-        - [Requirements](#requirements)
 
 # Site Configuration - [data.json](json/data.json)
 
@@ -33,6 +12,7 @@ The file consists of a **root** `object` with the following **required** keys:
 
 - [siteName](#sitename)
 - [bgVideo](#bgVideo)
+- [favicon](#favicon)
 - [collectables](#collectables)
 - [fields](#fields)
 - [carousel](#carousel)
@@ -54,6 +34,11 @@ A `string` used as the site name and page title.
 ### BgVideo
 
 A `string` corresponding to the url of the video to use in background.
+
+### Favicon
+
+A `string` corresponding to the url of the favicon to use in background.
+> you can convert a png in favicon with [favicon.io](https://favicon.io/)
 
 ### Collectables
 

@@ -51,9 +51,7 @@
   top: 0;
   z-index: 2;
   font-size: 7rem;
-}
-.css_top-title--scrolling {
-  position: relative;
+  text-align: center;
 }
 
 *, *::before, *::after {
