@@ -13,5 +13,10 @@ $color : (
 
 @font-face{
     font-family: "Genjiro";
-    src: url("../font/Genjiro.ttf") format("true")
+    src: url("../font/Genjiro.ttf") format("truetype")
+}
+
+@font-face{
+    font-family: "Lato";
+    src: url("../font/Lato-Regular.ttf") format("truetype")
 }

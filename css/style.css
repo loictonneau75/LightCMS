@@ -4,11 +4,16 @@
 }
 @font-face {
   font-family: "Genjiro";
-  src: url("../font/Genjiro.ttf") format("true");
+  src: url("../font/Genjiro.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../font/Lato-Regular.ttf") format("truetype");
 }
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
+  font-family: Lato;
 }
 
 .css_background-div {
