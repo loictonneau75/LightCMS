@@ -74,7 +74,7 @@ An `object` that defines the name of the collected items in each supported [lang
 
 An `array` of [rows](#row). Each [row](#row) represents a single line of inputs in the form.
 
-```json
+```python
 {
     ...,
     "fields":[
@@ -92,7 +92,7 @@ An `array` of [rows](#row). Each [row](#row) represents a single line of inputs 
 A row is an `object` where each key represents an [input](#input). Each [input](#input) is itself an `object` defining a form field.
 
 
-```json
+```
 {
     ...,
     "fields":[
