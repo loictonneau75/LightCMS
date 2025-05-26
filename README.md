@@ -37,10 +37,10 @@ The file consists of a **root** `object` with the following **required** keys:
 - [fields](#fields)
 - [carousel](#carousel)
 
-```
+```js
 {
-    "siteName": "str",
-    "bgVideo": "str",
+    "siteName": str,
+    "bgVideo": str,
     "collectables":{...},
     "field":[...],
     "carousel":{...}
@@ -63,8 +63,8 @@ An `object` that defines the name of the collected items in each supported [lang
 {
     ...,
     "collectables":{
-        "en": "str",
-        "fr": "str"
+        "en": str,
+        "fr": str
     },
     ...
 }
@@ -130,12 +130,12 @@ Each input must at minimum include the following keys:
     "fields":[
         {
             "key1": {
-                "id": "str",
-                "required": "bool",
-                "cardPosition": "str", // "header" or "body" 
+                "id": str,
+                "required": bool,
+                "cardPosition": str, // "header" or "body" 
                 "label":{
-                    "en": "str",
-                    "fr": "str"
+                    "en": str,
+                    "fr": str
                 }
             },
             ...
@@ -168,13 +168,13 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
-                    "cardPosition": "str",
-                    "storageKey":"str",
+                    "id": str,
+                    "required": bool,
+                    "cardPosition": str,
+                    "storageKey":str,
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 ...
@@ -191,14 +191,14 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
-                    "cardPosition": "str",
-                    "storageKey":"str",
-                    "otherId":"str",
+                    "id": str,
+                    "required": bool,
+                    "cardPosition": str,
+                    "storageKey":str,
+                    "otherId":str,
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 ...
@@ -215,14 +215,14 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
-                    "cardPosition": "str",
-                    "storageKey":"str",
-                    "choiceId":"str",
+                    "id": str,
+                    "required": bool,
+                    "cardPosition": str,
+                    "storageKey":str,
+                    "choiceId":str,
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 ...
@@ -239,13 +239,13 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
-                    "cardPosition": "str",
-                    "textarea": "int",
+                    "id": str,
+                    "required": bool,
+                    "cardPosition": str,
+                    "textarea": int,
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 ...
@@ -262,13 +262,13 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
-                    "cardPosition": "str",
-                    "nbColumn":"int",
+                    "id": str,
+                    "required": bool,
+                    "cardPosition": str,
+                    "nbColumn":int,
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 ...
@@ -285,23 +285,23 @@ Additional properties allow you to control input behavior and appearance:
         "fields":[
             {
                 "key1": {
-                    "id": "str",
-                    "required": "bool",
+                    "id": str,
+                    "required": bool,
                     "cardPosition": "header",
                     "cardRole": "title"
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 },
                 "key2": {
-                    "id": "str",
-                    "required": "bool",
+                    "id": str,
+                    "required": bool,
                     "cardPosition": "header",
                     "cardRole": "subtitle",
                     "label":{
-                        "en": "str",
-                        "fr": "str"
+                        "en": str,
+                        "fr": str
                     }
                 }
                 ...
@@ -330,11 +330,11 @@ An `object` describing visual carousel behavior:
 {
     ...,
     "carousel":{
-        "slidesToScroll": "int",
-        "slidesVisible": "int",
-        "loop": "bool",
-        "infinite": "bool",
-        "slideIndicator": "bool"
+        "slidesToScroll": int,
+        "slidesVisible": int,
+        "loop": bool,
+        "infinite": bool,
+        "slideIndicator": bool
     }
 }
 ```
