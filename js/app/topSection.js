@@ -1,9 +1,9 @@
 import * as DH from "../tools/domHelper.js"
 
 export class TopSection{
-    constructor(config, label){
+    constructor(config, label, lang){
         this.wrapper = DH.createCustomElement("div", {classList:["css_top-wrapper"]})
-        this.welcome = DH.createCustomElement("p", {innerText: label.fr.welcome ,classList: ["css_top-text", "js_top-text"]})
+        this.welcome = DH.createCustomElement("p", {innerText: label[lang].welcome ,classList: ["css_top-text", "js_top-text"]})
         this.title = DH.createCustomElement("p", {innerText: config.siteName.replace(/ /g, '\n') ,classList: ["css_top-text", "css_top-title", "js_top-title"]})
         this.wrapper.append(this.welcome, this.title)
     }

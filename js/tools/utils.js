@@ -8,3 +8,7 @@ export async function getConfigValue(path) {
     const response = await fetch(getAbsoltutePath(path))
     return await response.json()
 }
+
+export function getlang(){
+    return localStorage.getItem("lang")
+}

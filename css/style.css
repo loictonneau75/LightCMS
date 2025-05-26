@@ -54,6 +54,26 @@
   text-align: center;
 }
 
+.css_form-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.css_language-wrapper {
+  position: absolute;
+  top: 1.5vh;
+  right: 1.5vw;
+  display: flex;
+  gap: 1vw;
+}
+.css_language-flag {
+  width: 4vw;
+  cursor: pointer;
+  background: #fff center center no-repeat;
+  border-radius: 10%;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;

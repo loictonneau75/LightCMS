@@ -1,6 +1,8 @@
 @use "./custom.scss" as custom;
 @use "./parts/background.scss";
 @use "./parts/topSection.scss";
+@use "./parts/form.scss";
+@use "./parts/language.scss";
 
 *, *::before, *::after {
     box-sizing: border-box;
