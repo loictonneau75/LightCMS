@@ -6,13 +6,15 @@
         padding: 1.5em;
         border-radius: 0.5em;
         backdrop-filter: blur(5px);
+        background-color: red;
         &-wrapper{
             display: flex;
             height: 100vh;
             width: 100%;
             align-items: center;
             justify-content: center;
-            gap: 10em
+            gap: 10em;
+            background-color: white;
         }
         &-row{
             display: flex;
