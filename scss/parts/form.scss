@@ -6,7 +6,7 @@
         padding: 1.5em;
         border-radius: 0.5em;
         backdrop-filter: blur(5px);
-        background-color: red;
+        margin-top: 10em;
         &-wrapper{
             display: flex;
             height: 100vh;
@@ -14,7 +14,6 @@
             align-items: center;
             justify-content: center;
             gap: 10em;
-            background-color: white;
         }
         &-row{
             display: flex;
