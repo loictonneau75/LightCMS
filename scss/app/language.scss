@@ -1,0 +1,18 @@
+
+.language{
+    position: absolute;
+    top: 1.5vh;
+    right: 1.5vw;
+    display: flex;
+    gap: 1vw;
+    &-flag{
+        width: 1em;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .language-flag {
+        width: 1.5em;
+    }
+}

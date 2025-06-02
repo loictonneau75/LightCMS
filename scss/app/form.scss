@@ -1,0 +1,116 @@
+@use "../custom.scss" as custom;
+@use "sass:map";
+
+.form{
+    display: flex; // Ajouté
+    flex-direction: column; // Ajouté
+    
+    width: 60%;
+    border: 0.05rem solid rgba(map.get(custom.$colors , "primary"), 0.3);
+    padding: 1.5em;
+    border-radius: 0.5em;
+    backdrop-filter: blur(5px);
+    &-section{
+        height: 100vh;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    &-row{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 10px; 
+        flex: 1;
+    }
+    &-input{
+        width: 100%;
+        border-radius: 0.6rem;
+        outline: none;
+        background-color: rgba(map.get(custom.$colors , "secondary"), 0.3);
+        border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.5);
+        color: map.get(custom.$colors , "primary");
+        padding: 0.2em 0.5em;
+        &::placeholder{
+            color: map.get(custom.$colors , "primary")
+        }
+        &:focus{
+            background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);
+            border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.65);
+        }
+        &-other{
+            display: none;
+            margin-top: 5px;
+        }
+        &-wrapper{
+            width: 100%;
+            &-inner{
+                position: relative;
+            }
+        }
+        &-caret{
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        transform: translateY(-50%);
+        pointer-events: none;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid map.get(custom.$colors , "primary");
+        }
+        &-choice{
+            background-color: rgba(map.get(custom.$colors , "secondary"), 0.3);
+            border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.5);
+            color: map.get(custom.$colors , "primary");
+            width: 100%;
+            &:hover{
+                background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);
+                border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.65);
+            }
+            &-wrapper {
+                border-radius: 0.5em;
+                display: none;
+                max-height: 200px;
+                overflow-y: auto;
+                /*scrollbar-color: red blue;
+                &::-webkit-scrollbar-button {
+                    display: none;
+                    width: 0;
+                    height: 0;
+                }*/
+            }
+        }
+    }
+    &-button{
+        width: 100%;
+        border-radius: 1rem;
+        border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.5);
+        background-color: rgba(map.get(custom.$colors , "primary"), 0.4);
+        color: map.get(custom.$colors , "primary");
+        &:hover{
+            border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.65);
+            background-color: rgba(map.get(custom.$colors , "primary"), 0.55)
+        }
+        &:active{
+            border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.55);
+            background-color: rgba(map.get(custom.$colors , "primary"), 0.45)
+        }
+    }
+    &-note{
+        font-size: clamp(0.5em, calc(1vw + 0.5em), 1em);
+        color: rgba(map.get(custom.$colors , "primary"), 0.45);
+        font-style: italic;
+        margin-bottom: 1em;
+    }
+    &-asterisk {
+        color: map.get(custom.$colors , "warning");
+
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
