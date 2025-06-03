@@ -4,42 +4,41 @@ import * as storage from "../tools/storage.js"
 import * as event from "../tools/event.js"
 
 export class Form{
-    constructor(config, label){
+    constructor(config, labels){
         this.collectablesNames = config.collectables.en
         this.lang = utils.getlang()
-        this.label = label[this.lang]
+        this.labels = labels[this.lang]
         this.fieldsData = config.fields
-        this.haveInputRequired = false
+        this.hasRequiredInput = false
 
-        this.section = DH.createCustomElement("section", {classList: ["form-section"]})
-        this.form = DH.createCustomElement("form", {classList: ["form"],autocomplete :"off"})
-        this.fieldsData.forEach(fieldRowData => this.buildRow(fieldRowData));
-        this.createCommentary()
-        this.createSubmitBtn()
-        
-        this.section.appendChild(this.form)
+        this.formSection = DH.createCustomElement("section", {classList: ["form-section"]})
+        this.formElement = DH.createCustomElement("form", {classList: ["form"],autocomplete :"off"})
+        this.fieldsData.forEach(fieldRowData => this.renderFieldRow(fieldRowData));
+        this.renderRequiredNote()
+        this.renderSubmitButton()
+        this.formSection.appendChild(this.formElement)
     }
     build(){
-        return this.section
+        return this.formSection
     }
 
-    buildRow(rowData){
+    renderFieldRow(rowData){
         const row = DH.createCustomElement("div", {classList: ["form-row"]})
-        Object.values(rowData).forEach(inputData => {this.buildInput(inputData, row)})
-        this.form.appendChild(row)
+        Object.values(rowData).forEach(inputData => {this.renderField(inputData, row)})
+        this.formElement.appendChild(row)
     }
 
-    buildInput(data, parent){
+    renderField(data, parent){
         const inputWrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper"]}) 
-        if (data.otherId){inputWrapper.append(...this.otherChoice(data))}
+        if (data.otherId){inputWrapper.append(...this.renderSelectableInputWithCustom(data))}
         //else if(data.choiceId){}
         //else if(data.textarea){}
-        else inputWrapper.appendChild(this.createSimpleInput(data))
+        else inputWrapper.appendChild(this.renderTextInput(data))
         parent.appendChild(inputWrapper)
-        if(data.nbColumn && data.nbColumn > 0) this.addEmptyInputWrapper(data, parent)
+        if(data.nbColumn && data.nbColumn > 0) this.fillEmptyColumns(data, parent)
     }
 
-    addEmptyInputWrapper(data, parent){
+    fillEmptyColumns(data, parent){
         const nbEmpty = data.nbColumn - 1
             for (let i = 0; i < nbEmpty; i++){
                 const emptyWrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper", "empty"]})
@@ -47,68 +46,63 @@ export class Form{
             }
     }
 
-    createSimpleInput(data){
-        return DH.createCustomElement("input", {id: data.id,type: "text",placeholder: this.required(data),classList: ["form-input"]})
+    renderTextInput(data){
+        return DH.createCustomElement("input", {id: data.id, type: "text", placeholder: this.required(data), classList: ["form-input"]})
     }
 
-    otherChoice(data){
-        const options = storage.getDataFromLocalStorage(data.storageKey)
-        if (options.length > 0){
-            const innerWrapper = DH.createCustomElement("div",{classList: ["form-input-wrapper-inner"]})
-            const input = this.createSimpleInput(data)
-            input.readOnly = true
-            const caret = DH.createCustomElement("div", {classList: ["form-input-caret"]})
-            const otherInput = DH.createCustomElement("input", {type: "text", placeholder: this.label.other, classList: ["form-input", "form-input-other"]})
-            innerWrapper.append(input, caret)
+    renderSelectableInputWithCustom(data) {
+        const savedOptions = storage.getDataFromLocalStorage(data.storageKey);
+        if (savedOptions.length === 0) return [this.renderTextInput(data)]
+        const selectedOptionInput = this.renderTextInput(data)
+        selectedOptionInput.readOnly = true
+        const customOptionInput = DH.createCustomElement("input", {type: "text", placeholder: this.labels.other, classList: ["form-input", "form-input-other"]})
+        const dropdownList = this.createDropdownList(savedOptions, selectedOptionInput)
+        const dropdownWrapper = this.createDropdownInputWrapper(selectedOptionInput)
+        event.setupDropdown(selectedOptionInput, dropdownList, customOptionInput, this.labels.other)
+        return [dropdownWrapper, dropdownList, customOptionInput]
+    }
 
-            const suggestionWrapper = DH.createCustomElement("div",{classList: ["form-input-choice-wrapper"]});
-            [this.label.other, ...options].forEach(option => {
-                const button = DH.createCustomElement("button",{type: "button",textContent:option,classList:["form-input-choice"]})
-                button.addEventListener("click", () => {
-                    input.value = option
-                    otherInput.style.display = (option === this.label.other) ? "block" : "none";
-                })
-                suggestionWrapper.appendChild(button)
-            })
-            input.addEventListener("focus", () => {
-                suggestionWrapper.style.display = "block"
-                otherInput.style.display = "none"
-            })
-            input.addEventListener("blur", () => {
-                setTimeout(() => {
-                    suggestionWrapper.style.display = "none";
-                }, 100);
-            })
-            return [innerWrapper,suggestionWrapper, otherInput]
-        }
-        else{
-            return [this.createSimpleInput(data)]
-        }
+    createDropdownInputWrapper(selectedInput) {
+        const wrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper-inner"]})
+        const caret = DH.createCustomElement("div", {classList: ["form-input-caret"]})
+        wrapper.append(selectedInput, caret)
+        return wrapper
+    }
+
+    createDropdownList(options, selectedInput) {
+        const list = DH.createCustomElement("div", { classList: ["form-input-choice-wrapper"] })
+        // the semicolon is just to make sure JavaScript understands that the [] is not part of the previous statement
+        ;[this.labels.other, ...options].forEach(option => { 
+            const button = DH.createCustomElement("button", {type: "button",textContent: option,classList: ["form-input-choice"]})
+            button.addEventListener("click", () => {selectedInput.value = option})
+            list.appendChild(button)
+        })
+        return list
     }
 
     required(data){
         if(data.required){
-            this.haveInputRequired = true
+            this.hasRequiredInput = true
             return `${data.label[this.lang]}*`
         }
         return data.label[this.lang]
     }
 
-    createCommentary(){
-        if(this.haveInputRequired){
+    renderRequiredNote(){
+        if(this.hasRequiredInput){
             const note = DH.createCustomElement("p", {classList: ["form-note"]})
             note.append(
-                document.createTextNode(this.label.required[0] + " "),
-                DH.createCustomElement("span", {classList: ["form-asterisk"],innerText: this.label.required[1]}),
-                document.createTextNode(" " + this.label.required[2])
+                document.createTextNode(this.labels.required[0] + " "),
+                DH.createCustomElement("span", {classList: ["form-asterisk"],innerText: this.labels.required[1]}),
+                document.createTextNode(" " + this.labels.required[2])
             )
-            this.form.appendChild(note)
+            this.formElement.appendChild(note)
         }
     }
 
-    createSubmitBtn(){
-        const submitButton = DH.createCustomElement("button", {type: "button",innerText: this.label.save,classList: ["form-button"]})
-        this.form.appendChild(submitButton)
+    renderSubmitButton(){
+        const submitButton = DH.createCustomElement("button", {type: "button",innerText: this.labels.save,classList: ["form-button"]})
+        this.formElement.appendChild(submitButton)
     }
     
 }

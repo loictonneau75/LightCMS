@@ -28,5 +28,18 @@ export function flagclick(components = []) {
     })
 }
 
+export function setupDropdown(input, dropdownList, customInput, otherLabel) {
+        input.addEventListener("focus", () => {
+            dropdownList.style.display = "block"
+            customInput.style.display = "none"
+        });
+        input.addEventListener("blur", () => {
+            setTimeout(() => {
+                dropdownList.style.display = "none"
+                customInput.style.display = (input.value === otherLabel) ? "block" : "none"
+            }, 100)
+        })
+    }
+
 
 
