@@ -31,6 +31,7 @@ event.flagclick([
     [TS.TopSection, [config, label]],
     [F.Form,[config, label]]
 ])
+document.body.appendChild(DH.createCustomElement("div",{classList:["div-test"]}))
 
 
 

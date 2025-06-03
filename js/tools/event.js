@@ -11,7 +11,7 @@ export function setupscroll(){
 
 
     window.addEventListener("scroll", () => {
-        utils.updateElementOpacity(overlay, title, bgColorData, 0.5, "backgroundColor")
+        utils.updateElementOpacity(overlay, title, bgColorData, 0.7, "backgroundColor")
         utils.updateElementOpacity(welcome, welcome, welcomeColorData, 0, "color")
         utils.stickyWithTransform(title, welcome, form, window.innerHeight * 0.1, 10)
     })
@@ -78,7 +78,7 @@ function onDropdownKeyDown(e, buttons, input, dropdownList, setIndex, currentInd
 
 function highlightButton(buttons, index) {
     buttons.forEach((btn, i) => {
-        btn.classList.toggle("form-input-choice-highlighted", i === index)
+        btn.classList.toggle("form-choice-highlighted", i === index)
         if (i === index) btn.scrollIntoView({ block: "nearest" })
     })
 }

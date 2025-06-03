@@ -1,55 +1,54 @@
 @use "../custom.scss" as custom;
 @use "sass:map";
 
+$primary: map.get(custom.$colors, "primary");
+$secondary: map.get(custom.$colors, "secondary");
+$warning: map.get(custom.$colors, "warning");
+$inputBgColor: rgba($secondary, 0.3);
+$inputBorderColor: rgba($primary, 0.5);
+$inputBorder: 0.1rem solid $inputBorderColor;
+$inputBgColorSelected: rgba($secondary, 0.45);
+$inputBorderSelected: 0.1rem solid rgba($primary, 0.65);
+$borderRadius: 0.6rem;
+$gap: 10px;
+
+
+
 .form{
-    display: flex; // Ajouté
-    flex-direction: column; // Ajouté
-    
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
     width: 60%;
-    border: 0.05rem solid rgba(map.get(custom.$colors , "primary"), 0.3);
+    border: 0.05rem solid rgba($primary, 0.3);
     padding: 1.5em;
-    border-radius: 0.5em;
+    border-radius: $borderRadius;
     backdrop-filter: blur(5px);
+
     &-section{
         height: 100vh;
         display: flex;
-        gap: 10px;
         align-items: center;
         justify-content: center;
     }
+
     &-row{
         display: flex;
+        gap: $gap;
         flex-direction: row;
-        gap: 10px;
-        margin-bottom: 10px; 
         flex: 1;
     }
-    &-input{
+
+    &-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: $gap;
         width: 100%;
-        border-radius: 0.6rem;
-        outline: none;
-        background-color: rgba(map.get(custom.$colors , "secondary"), 0.3);
-        border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.5);
-        color: map.get(custom.$colors , "primary");
-        padding: 0.2em 0.5em;
-        &::placeholder{
-            color: map.get(custom.$colors , "primary")
+        &-inner{
+            position: relative;
         }
-        &:focus{
-            background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);
-            border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.65);
-        }
-        &-other{
-            display: none;
-            margin-top: 5px;
-        }
-        &-wrapper{
-            width: 100%;
-            &-inner{
-                position: relative;
-            }
-        }
-        &-caret{
+    }
+
+    &-caret{
         position: absolute;
         top: 50%;
         right: 1em;
@@ -57,57 +56,87 @@
         pointer-events: none;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-top: 6px solid map.get(custom.$colors , "primary");
+        border-top: 6px solid $primary;
+    }
+    &-choice{
+        background-color: $inputBgColor;
+        border: $inputBorder;
+        color: $primary;
+        width: 100%;
+        &:hover{
+            background-color: $inputBgColorSelected;
+            border: $inputBorderSelected;
         }
-        &-choice{
-            background-color: rgba(map.get(custom.$colors , "secondary"), 0.3);
-            border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.5);
-            color: map.get(custom.$colors , "primary");
-            width: 100%;
-            &:hover{
-                background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);
-                border: 0.1rem solid rgba(map.get(custom.$colors , "primary"), 0.65);
+        &-wrapper {
+            
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            &::-webkit-scrollbar{
+                width: 0.3em;
+                
             }
-            &-wrapper {
-                border-radius: 0.5em;
-                display: none;
-                max-height: 200px;
-                overflow-y: auto;
-                /*scrollbar-color: red blue;
-                &::-webkit-scrollbar-button {
-                    display: none;
-                    width: 0;
-                    height: 0;
-                }*/
+            &::-webkit-scrollbar-track{
+                background: $inputBgColor;
+                
             }
-            &-highlighted{
-                background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);    
+            &::-webkit-scrollbar-thumb{
+                background: $inputBorderColor;
+                
             }
+        }
+        &-highlighted{
+            background-color: $inputBgColorSelected;
+            border: $inputBorderSelected;
         }
     }
+
+    &-input{
+        width: 100%;
+        height: 4rem;
+        border-radius: $borderRadius;
+        outline: none;
+        background-color: $inputBgColor;
+        border: $inputBorder;
+        color: $primary;
+        padding-left: 1rem;
+        &::placeholder{
+            color: rgba($primary, 0.3)
+        }
+        &:focus{
+            background-color: $inputBgColorSelected;
+            border: $inputBorderSelected;
+        }
+        &-other{
+            display: none;
+        }
+    }
+
     &-button{
         width: 100%;
-        border-radius: 1rem;
-        border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.5);
-        background-color: rgba(map.get(custom.$colors , "primary"), 0.4);
-        color: map.get(custom.$colors , "primary");
+        border-radius: $borderRadius;
+        border: 0.07rem solid rgba($secondary, 0.5);
+        background-color: rgba($primary, 0.4);
+        color: $primary;
         &:hover{
-            border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.65);
-            background-color: rgba(map.get(custom.$colors , "primary"), 0.55)
+            border: 0.07rem solid rgba($secondary, 0.65);
+            background-color: rgba($primary, 0.55)
         }
         &:active{
-            border: 0.07rem solid rgba(map.get(custom.$colors , "secondary"), 0.55);
-            background-color: rgba(map.get(custom.$colors , "primary"), 0.45)
+            border: 0.07rem solid rgba($secondary, 0.55);
+            background-color: rgba($primary, 0.45)
         }
     }
+
     &-note{
         font-size: clamp(0.5em, calc(1vw + 0.5em), 1em);
-        color: rgba(map.get(custom.$colors , "primary"), 0.45);
+        color: rgba($primary, 0.45);
         font-style: italic;
         margin-bottom: 1em;
     }
+
     &-asterisk {
-        color: map.get(custom.$colors , "warning");
+        color: $warning;
 
     }
 }
@@ -115,5 +144,8 @@
 @media screen and (max-width: 576px) {
     .form-row {
         flex-direction: column;
+    }
+    .form-choice-wrapper::-webkit-scrollbar{
+        width: 0.2em;
     }
 }

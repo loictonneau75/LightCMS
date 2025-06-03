@@ -29,7 +29,7 @@ export class Form{
     }
 
     renderField(data, parent){
-        const inputWrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper"]}) 
+        const inputWrapper = DH.createCustomElement("div", {classList: ["form-wrapper"]})
         if (data.otherId){inputWrapper.append(...this.renderSelectableInputWithCustom(data))}
         //else if(data.choiceId){}
         //else if(data.textarea){}
@@ -41,7 +41,7 @@ export class Form{
     fillEmptyColumns(data, parent){
         const nbEmpty = data.nbColumn - 1
             for (let i = 0; i < nbEmpty; i++){
-                const emptyWrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper", "empty"]})
+                const emptyWrapper = DH.createCustomElement("div", {classList: ["form-wrapper", "empty"]})
                 parent.appendChild(emptyWrapper)
             }
     }
@@ -62,19 +62,19 @@ export class Form{
         return [dropdownWrapper, dropdownList, customOptionInput]
     }
 
-    createDropdownInputWrapper(selectedInput) {
-        const wrapper = DH.createCustomElement("div", {classList: ["form-input-wrapper-inner"]})
-        const caret = DH.createCustomElement("div", {classList: ["form-input-caret"]})
-        wrapper.append(selectedInput, caret)
-        return wrapper
+    createDropdownInputWrapper(selectedOptionInput) {
+        const innerWrapper = DH.createCustomElement("div", {classList: ["form-wrapper-inner"]})
+        const caret = DH.createCustomElement("div", {classList: ["form-caret"]})
+        innerWrapper.append(selectedOptionInput, caret)
+        return innerWrapper
     }
 
-    createDropdownList(options, selectedInput) {
-        const list = DH.createCustomElement("div", { classList: ["form-input-choice-wrapper"] })
+    createDropdownList(savedOptions, selectedOptionInput) {
+        const list = DH.createCustomElement("div", { classList: ["form-choice-wrapper"] })
         // the semicolon is just to make sure JavaScript understands that the [] is not part of the previous statement
-        ;[this.labels.other, ...options].forEach(option => { 
-            const button = DH.createCustomElement("button", {type: "button",textContent: option,classList: ["form-input-choice"]})
-            button.addEventListener("click", () => {selectedInput.value = option})
+        ;[this.labels.other, ...savedOptions].forEach(option => { 
+            const button = DH.createCustomElement("button", {type: "button",textContent: option,classList: ["form-choice"]})
+            button.addEventListener("click", () => {selectedOptionInput.value = option})
             list.appendChild(button)
         })
         return list
