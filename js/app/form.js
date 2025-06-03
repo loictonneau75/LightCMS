@@ -72,6 +72,7 @@ export class Form{
             })
             input.addEventListener("focus", () => {
                 suggestionWrapper.style.display = "block"
+                otherInput.style.display = "none"
             })
             input.addEventListener("blur", () => {
                 setTimeout(() => {
