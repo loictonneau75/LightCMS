@@ -72,12 +72,12 @@ export class Form{
             })
             input.addEventListener("focus", () => {
                 suggestionWrapper.style.display = "block"
-                if (input.value !== this.label.other) {
-                    otherInput.style.display = "none";
-                }
             })
-            input.addEventListener("blur", () => setTimeout(() => {suggestionWrapper.style.display = "none", 100}))
-
+            input.addEventListener("blur", () => {
+                setTimeout(() => {
+                    suggestionWrapper.style.display = "none";
+                }, 100);
+            })
             return [innerWrapper,suggestionWrapper, otherInput]
         }
         else{
