@@ -166,6 +166,9 @@
       height: 0;
   }*/
 }
+.form-input-choice-highlighted {
+  background-color: rgba(169, 159, 184, 0.45);
+}
 .form-button {
   width: 100%;
   border-radius: 1rem;

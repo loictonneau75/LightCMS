@@ -80,6 +80,9 @@
                     height: 0;
                 }*/
             }
+            &-highlighted{
+                background-color: rgba(map.get(custom.$colors , "secondary"), 0.45);    
+            }
         }
     }
     &-button{
